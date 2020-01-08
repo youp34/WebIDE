@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webIDE | Python</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        function submit_code() {
+            var code
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:5000/run",
+                dataType:"json",
+                data: $('#form1').serialize(),
+                async : false,
+                success:function (result) {
+                },
+                error :function(error) {
+                    console.log(error)
+                    var str = error.responseText
+                    var output = str.split(':')[2]
+                    var url = output.split(',')[0]
+                    url=url.substr(0,url.length-1);
+                    url=url.substr(1,url.length-1);
+                    url=url.substr(1,url.length-1);
+                    if (url === 'Error') {
+                        $("#a1").html("================Error===============");
+                    } else {
+                        code = url.split('\\')[0]
+                        $("#a1").html(code)
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<style>
+    body {
+        background: linear-gradient(135deg, #3023AE, #C86DD7);
+        background-attachment: fixed;
+        /* 顺便加个字体吧 */
+        font-size: 15px;
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei;
+    }
+    *{
+        margin: 0;
+    }
+    .page-header {
+        padding: 20px 30px;
+        overflow: hidden;
+    }
+    .page-header .brand{
+        color: white;
+        text-decoration: none;
+        float: left;
+    }
+    .btn {
+        color: white;
+        background: rgb(83, 174, 47);
+        font-size: 16px;
+        line-height: 38px;
+        height: 38px;
+        padding: 0 20px;
+        border-radius: 3px;
+        display: inline-block;
+        text-decoration: none;
+        transition: background .15s;
+    }
+    .btn:hover {
+        background-color: rgb(81, 67, 224);
+    }
+</style>
+<body>
+<div class="page-header">
+    <a class="brand" href="/"><-返回首页</a>
+</div>
+<div>
+    <div style="float: left; margin-left: 50px">
+        <form id="form1" onsubmit="return false" action="#" method="post">
+            <div style="margin-bottom: 5px">
+                <button class="btn" style="border: 0px" onclick="submit_code()">点击运行</button>
+            </div>
+            <textarea name="code" rows="40" cols="90" onscroll="this.rows++;"></textarea>
+        </form>
+    </div>
+    <div style="float: right; margin-right: 50px">
+        <div style="margin-bottom: 10px">
+            <h2 style="color: wheat">编译结果:</h2>
+        </div>
+        <!--<textarea name="java_source" rows="40" cols="90" onscroll="this.rows++;" id="res" placeholder=""></textarea>-->
+        <div style="background-color: white; height: 608px; width: 654px" id="a1">
+        </div>
+    </div>
+</div>
+</body>
+</html>

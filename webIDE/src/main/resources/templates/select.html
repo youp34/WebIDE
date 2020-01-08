@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webIDE</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(135deg, #3023AE, #C86DD7);
+        background-attachment: fixed;
+        /* 顺便加个字体吧 */
+        font-size: 15px;
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei;
+    }
+    *{
+        margin: 0;
+    }
+    .page-header {
+        padding: 20px 30px;
+        overflow: hidden;
+    }
+    .page-header .brand{
+        color: white;
+        text-decoration: none;
+        float: left;
+    }
+    .panel {
+        margin: 120px auto 60px;
+        text-align: center;
+        background-color: white;
+        width: 500px;
+        border-radius: 10px;  /* 来个圆角 */
+        padding: 1px;
+        transition: box-shadow .30s;
+    }
+    .panel:hover{
+        box-shadow: #fff 5px 5px 25px;
+    }
+    .avatar img {
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+        margin-top: -60px;
+    }
+    h3 {
+        font-weight: bold;
+        font-size: 16px;
+        margin: 15px 0 20px;
+    }
+    p.lead{
+        color: #333;
+        font-style: italic;
+        margin-bottom: 30px;
+        margin-top: 15px;
+    }
+    .btn {
+        color: white;
+        background: rgb(48, 35, 174);
+        font-size: 16px;
+        line-height: 38px;
+        height: 38px;
+        padding: 0 20px;
+        border-radius: 3px;
+        display: inline-block;
+        text-decoration: none;
+        transition: background .15s;
+    }
+    .btn:hover {
+        background-color: rgb(81, 67, 224);
+    }
+</style>
+<body>
+<div class="page-header">
+    <a class="brand" href=""></a>
+</div>
+<section class="panel">
+    <h1 style="margin-top: 30px">WebIDE</h1>
+    <p class="lead">A real-time platform for online compilation!</p>
+    <p>
+        <a class="btn" href="/java">
+            <i class="fa fa-bars"></i> Java 编译
+        </a>
+    </p>
+    <p style="margin-top: 20px">
+        <a class="btn" href="/python">
+            <i class="fa fa-bars"></i> Python 编译
+        </a>
+    </p>
+    <p style="margin-top: 20px; margin-bottom: 30px">
+        <a class="btn" href="/c">
+            <i class="fa fa-bars"></i> C 编译
+        </a>
+    </p>
+</section>
+<footer style="text-align: center; margin-top: 210px">design by 赵朋玉-team</footer>
+</body>
+</html>

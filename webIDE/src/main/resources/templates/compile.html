@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>webIDE | Java</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(135deg, #3023AE, #C86DD7);
+        background-attachment: fixed;
+        /* 顺便加个字体吧 */
+        font-size: 15px;
+        font-family: "Helvetica Neue", Helvetica, Microsoft Yahei;
+    }
+    *{
+        margin: 0;
+    }
+    .page-header {
+        padding: 20px 30px;
+        overflow: hidden;
+    }
+    .page-header .brand{
+        color: white;
+        text-decoration: none;
+        float: left;
+    }
+    .btn {
+        color: white;
+        background: rgb(83, 174, 47);
+        font-size: 16px;
+        line-height: 38px;
+        height: 38px;
+        padding: 0 20px;
+        border-radius: 3px;
+        display: inline-block;
+        text-decoration: none;
+        transition: background .15s;
+    }
+    .btn:hover {
+        background-color: rgb(81, 67, 224);
+    }
+</style>
+<body>
+<div class="page-header">
+    <a class="brand" href="/"><-返回首页</a>
+</div>
+<div>
+    <div style="float: left; margin-left: 50px">
+        <form action="/java" method="post">
+            <div style="margin-bottom: 5px">
+                <input type="submit" class="btn" value="点击运行" style="border: 0px"/>
+            </div>
+            <textarea name="java_source" rows="40" cols="90" onscroll="this.rows++;" th:text="${code}"></textarea>
+        </form>
+    </div>
+    <div style="float: right; margin-right: 50px">
+        <div style="margin-bottom: 10px">
+            <h2 style="color: wheat">编译结果:</h2>
+        </div>
+            <textarea name="java_source" rows="40" cols="90" onscroll="this.rows++;" th:text="${result}"></textarea>
+    </div>
+</div>
+</body>
+</html>
